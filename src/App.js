@@ -1,11 +1,32 @@
+import React, { lazy } from "react";
+import { Routes, Route } from "react-router-dom";
+import Layout from "./components/Layout";
 import "./App.css";
 
-function App() {
+const Overview = lazy(() => import("./pages/Overview"));
+const Streams = lazy(() => import("./pages/Streams"));
+
+const App = () => {
   return (
-    <div className="text-3xl font-bold text-blue-600">
-      Inital React and Tailwind Setup
-    </div>
+    <Routes>
+      <Route
+        path="/"
+        element={
+          <Layout>
+            <Overview />
+          </Layout>
+        }
+      />
+      <Route
+        path="/streams"
+        element={
+          <Layout>
+            <Streams />
+          </Layout>
+        }
+      />
+    </Routes>
   );
-}
+};
 
 export default App;
