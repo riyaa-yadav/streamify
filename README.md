@@ -1,70 +1,126 @@
-# Getting Started with Create React App
+# Streamify
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Streamify is a web application built using modern frontend technologies to display and analyze music streaming data. The application provides a user-friendly interface with search, sorting, and visualization features.
 
-## Available Scripts
+## Tech Stack
 
-In the project directory, you can run:
+- **React**: Used as the frontend framework for building reusable components.
+- **Tailwind CSS**: Utilized for styling, providing a utility-first approach to design.
+- **Mirage JS**: Used to mock API responses, enabling development without relying on a backend.
+- **Recharts**: A library for creating interactive and visually appealing charts.
 
-### `npm start`
+---
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Project Structure
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+```
+streamify/
+│── src/
+│   ├── components/    # Common UI components
+│   ├── hooks/         # Custom hooks (e.g., useDebounce)
+│   ├── services/      # MirageJS API setup
+│   │   ├── server/    # MirageJS server instance
+│   │   ├── overview/  # API logic for overview page
+│   │   └── streams/   # Mock data for streaming
+│   ├── pages/         # Application pages
+│   │   ├── overview/  # Overview page with dashboard
+│   │   └── stream/    # Stream page for song list
+│   ┌─ App.js         # Main application file
+│   ┌─ index.js       # Entry point of the React application
+│─ public/            # Static assets
+│─ package.json       # Dependencies and scripts
+│─ README.md          # Project documentation
+```
 
-### `npm test`
+---
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Approach
 
-### `npm run build`
+### 1. Overview Page
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+The **Overview** page provides a summary of streaming data, including:
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+- **Total Users**: Number of registered users.
+- **Active Users**: Users who streamed at least once in the last 30 days.
+- **Total Streams**: Total number of song streams.
+- **Revenue**: Revenue from subscriptions and advertisements.
+- **Top Artist**: Most streamed artist in the last 30 days.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Additionally, it features charts for:
 
-### `npm run eject`
+- **User Growth Chart**: Line chart showing user growth over the last 12 months.
+- **Revenue Distribution**: Pie chart displaying revenue breakdown.
+- **Top 5 Streamed Songs**: Bar chart highlighting the most-streamed songs.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+### 2. Stream Page
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+The **Stream** page displays a list of recently streamed songs with the following functionalities:
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+- **Pagination** for better data handling.
+- **Search** functionality to filter songs by name or artist.
+- **Sorting** to organize streams by date or count.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+---
 
-## Learn More
+## Thought Process
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+### UI/UX Considerations
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+- Designed a **responsive UI** where tables scroll horizontally when needed.
+- Used **Tailwind CSS** for modular styling and faster development.
+- Implemented **search, sorting, and pagination** to improve usability.
+- Integrated **Recharts** for meaningful data visualization.
 
-### Code Splitting
+### State Management
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+- Utilized React's `useState` and `useEffect` for component state.
+- Applied **debounced search** via a custom `useDebounce` hook to optimize performance.
 
-### Analyzing the Bundle Size
+### API Mocking
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+- **MirageJS** was used to create a mock API, allowing development without a backend.
+- The API structure was organized into services for better maintainability.
 
-### Making a Progressive Web App
+---
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+## How to Run the Application
 
-### Advanced Configuration
+### Prerequisites
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+Ensure you have **Node.js** installed on your machine.
 
-### Deployment
+### Steps
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+1. Clone the repository:
+   ```sh
+   git clone https://github.com/riyaa-yadav/streamify.git
+   cd streamify
+   ```
+2. Install dependencies:
+   ```sh
+   npm install
+   ```
+3. Start the development server:
+   ```sh
+   npm start
+   ```
+4. Open the application in your browser at `http://localhost:3000/`
 
-### `npm run build` fails to minify
+---
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## Trade-offs
+
+- **MirageJS vs. Real API**: MirageJS is useful for development, but a real backend is needed for production.
+- **Table Performance**: Fetching all data at once may impact scalability; server-side filtering could improve this.
+- **Tailwind CSS vs. Styled Components**: Tailwind provides fast styling, but Styled Components offer better dynamic styling capabilities.
+
+---
+
+## Future Improvements
+
+- Implement backend API integration.
+- Add authentication and user-specific dashboards.
+- Optimize performance with **virtualized lists**.
+- Enhance UI with better design, dark mode, animations, and improved interactivity.
+
+---
