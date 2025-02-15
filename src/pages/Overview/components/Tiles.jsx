@@ -1,5 +1,17 @@
 import React, { useEffect, useState } from "react";
-import TilesShimmer from "./TilesShimmer";
+
+const Skeleton = () => {
+  return (
+    <div className="grid grid-cols-2 sm:grid-cols-5 gap-4">
+      {Array.from({ length: 5 }).map((_, index) => (
+        <div
+          key={index}
+          className="bg-gray-200 rounded-lg h-20 animate-pulse"
+        ></div>
+      ))}
+    </div>
+  );
+};
 
 const Tiles = () => {
   const [tiles, setTiles] = useState(null);
@@ -20,7 +32,7 @@ const Tiles = () => {
       .finally(() => setIsLoading(false));
   }, []);
 
-  if (isLoading) return <TilesShimmer />;
+  if (isLoading) return <Skeleton />;
 
   const tileData = [
     { title: "Total Users", count: tiles?.totalUsers },
