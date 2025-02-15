@@ -17,8 +17,8 @@ export function makeServer() {
       // Overview APIs
       this.get("/overview/tiles", () => getOverviewTiles());
       this.get("/overview/user-growth", () => getUserGrowth());
-      this.get("/overview/top-songs", () => getTopStreamedSongs()); // ✅ Corrected
-      this.get("/overview/revenue", () => getRevenueDistribution()); // ✅ Corrected
+      this.get("/overview/top-songs", () => getTopStreamedSongs());
+      this.get("/overview/revenue", () => getRevenueDistribution());
 
       // Streams API
       this.get("/streams", () => getStreamData());

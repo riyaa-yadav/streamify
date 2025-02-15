@@ -5,14 +5,10 @@ import UserGrowthChart from "./components/UserGrowthChart";
 import RevenueChart from "./components/RevenueChart";
 import TopSongsChart from "./components/TopSongsChart";
 
-const Overview = () => {
-  const [activeTab, setActiveTab] = useState("User Growth");
+const tabList = ["User Growth", "Revenue Distribution", "Top 5 Streamed Songs"];
 
-  const tabList = [
-    "User Growth",
-    "Revenue Distribution",
-    "Top 5 Streamed Songs",
-  ];
+const Overview = () => {
+  const [activeTab, setActiveTab] = useState(tabList[0]);
 
   return (
     <div className="flex flex-col gap-6 p-6">

@@ -39,12 +39,10 @@ const RevenueChart = () => {
 
   return (
     <div className="w-full rounded-lg border border-gray-300 p-4">
-      {/* Show Title in Mobile View */}
       <h2 className="text-lg font-semibold text-center sm:hidden mb-4">
         Revenue Distribution
       </h2>
 
-      {/* Enable horizontal scroll for mobile */}
       <div className="overflow-x-auto">
         <ResponsiveContainer width="100%" height={400}>
           <PieChart>

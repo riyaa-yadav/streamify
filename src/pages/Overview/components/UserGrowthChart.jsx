@@ -17,7 +17,7 @@ const Skeleton = () => {
         <div className="h-6 w-1/4 bg-gray-300 mb-4 rounded"></div>
       </div>
       <div className="h-[280px] w-full bg-gradient-to-r from-gray-300 to-gray-100 rounded-lg"></div>
-      <div className="h-6 w-full bg-gray-300 rounded mt-4"></div> {/* X-axis */}
+      <div className="h-6 w-full bg-gray-300 rounded mt-4"></div>
     </div>
   );
 };

@@ -14,7 +14,7 @@ const Skeleton = () => {
     <div className="w-full h-[400px] flex flex-col justify-between p-4 rounded-lg bg-gray-100 animate-pulse border border-gray-300">
       <div className="h-full flex items-end gap-4">
         {[...Array(5)].map((_, i) => {
-          const randomHeight = Math.floor(Math.random() * 50) + 40; // Height between 40% - 90%
+          const randomHeight = Math.floor(Math.random() * 50) + 40;
           return (
             <div
               key={i}
